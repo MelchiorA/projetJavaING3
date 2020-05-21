@@ -1,0 +1,53 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+    https://openclassrooms.com/fr/courses/26832-apprenez-a-programmer-en-java/
+    26830-liez-vos-tables-avec-des-objets-java-le-pattern-dao
+
+ */
+
+/**
+ *
+ * @author Admin
+ */
+package com.sdz.dao;
+
+import java.sql.Connection;
+import com.sdz.connection.SdzConnection;
+
+public abstract class DAO<T> {
+  protected Connection connect = null;
+   
+  public DAO(Connection conn){
+    this.connect = conn;
+  }
+   
+  /**
+  * Méthode de création
+  * @param obj
+  * @return boolean 
+  */
+  public abstract boolean create(T obj);
+
+  /**
+  * Méthode pour effacer
+  * @param obj
+  * @return boolean 
+  */
+  public abstract boolean delete(T obj);
+
+  /**
+  * Méthode de mise à jour
+  * @param obj
+  * @return boolean
+  */
+  public abstract boolean update(T obj);
+
+  /**
+  * Méthode de recherche des informations
+  * @param id
+  * @return T
+  */
+  public abstract T find(int id);
+}
